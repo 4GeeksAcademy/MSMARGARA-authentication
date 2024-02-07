@@ -2,51 +2,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
-			demo: [
+			user: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					id: "3",
+					email: "marmargara.mm@gmail.com",
+					password : "4geeks",
+					is_active :false
 				}
 			]
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-
 			getMessage: async () => {
 				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
+					//const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
 					return data;
 				}catch(error){
 					console.log("Error loading message from backend", error)
 				}
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+			},	
+			login: async (email, password) => {
+                try {
+                    const resp = await fetch("https://friendly-halibut-wr75gwjvq4p7f9grw-3001.app.github.dev/api/login", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+							'Access-Control-Allow-Origin':'*'
+                        },
+                        body: JSON.stringify({ email, password }),
+                    });
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+                    if (resp.ok) {
+						const data = await resp.json();
+						const { user } = data;
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+						const updatedUserList = getStore().user.map(u => {
+							if (u.email === user.email) {
+								return { ...u, is_active: true };
+							}
+							return u;
+						});
+					
+						setStore({ user: updatedUserList });
+						setStore({ isAuthenticated: true });
+					
+						return data;
+					}else {
+                        const errorData = await resp.json();
+                        console.error('Error en la autenticación:', errorData);
+                    }
+                } catch (error) {
+                    console.log("Error en la autenticación:", error);
+                }
+            },
 		}
 	};
 };
