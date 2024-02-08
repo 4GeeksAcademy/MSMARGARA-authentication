@@ -31,4 +31,9 @@ input {
 .btnLogin:hover{
     background-color: #f5f2ef
 }
-
+input {
+    background-color: white;
+}
+.input:not(:placeholder-shown):valid {
+    background-color: rgb(230, 173, 208);
+}

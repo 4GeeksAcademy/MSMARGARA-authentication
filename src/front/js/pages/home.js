@@ -6,7 +6,7 @@ import { Navbar } from "../component/navbar";
 export const Home = () => {
     return (
         <div>
-            <Navbar />
+            <Navbar isLoggedIn={false}/>
             <div className="home">
                 <div className="row homeContainer">
                     <div className="col-7 text">

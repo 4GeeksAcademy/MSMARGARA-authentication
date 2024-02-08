@@ -1,21 +1,14 @@
 .navbar {
     margin: 0; 
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 4.5;
+    padding: 0; 
     height: 10vh;
     background-color: #E7DFD8;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.linkHome{
-    margin-left: 9vh;
-    font-size: 2.7vh;
-    text-decoration: none !important; 
-    color: black !important; 
+.container-fluid.navebar {
+    padding: 0 !important;
 }
-
-.btn{
-    margin-right: 9vh;
+.btn {
     border: solid black 1px;
+    margin-left: 195vh;
 }

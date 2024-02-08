@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			message: null,
 			user: [
 				{}
-			]
+			],
 		},
 		actions: {
 			getMessage: async () => {
@@ -27,20 +27,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                         },
                         body: JSON.stringify({ email, password }),
                     });
-
                     if (resp.ok) {
 						const data = await resp.json();
-			
+						localStorage.setItem("token", data.token);
 						const updatedUserList = getStore().user.map(u => {
 							if (u.email === data.email) {
 								return { ...u, is_active: true };
 							}
 							return u;
 						});
-					
 						setStore({ user: updatedUserList });
 						setStore({ isAuthenticated: true });
-					
 						return data;
 					}else {
                         const errorData = await resp.json();
@@ -67,7 +64,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					} else {
 						const errorData = await resp.json();
 						console.error('Error al crear usuario:', errorData);
-						throw new Error('Error al crear usuario');
+
+						if (errorData.msg === "El usuario ya existe") {
+							throw new Error('El correo electrónico ya está registrado.');
+						} else {
+							throw new Error('Error al crear usuario.');
+						}
 					}
 				} catch (error) {
 					console.log("Error al crear usuario:", error);

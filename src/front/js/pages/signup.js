@@ -7,6 +7,7 @@ export const Signup = () => {
   const { actions } = useContext(Context);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -17,7 +18,18 @@ export const Signup = () => {
       navigate("/login"); 
     } catch (error) {
       console.error('Error al crear usuario:', error);
-    }
+      if (error.message === "El correo electrónico ya está registrado.") {
+          setErrorMessage("La cuenta ya existe. Por favor, intenta con otro correo electrónico.");
+      } else {
+          setErrorMessage("Error al crear la cuenta. Por favor, inténtalo de nuevo más tarde.");
+      }
+      setEmail('');
+      setPassword('');
+  }
+  };
+
+  const handleInputChange = () => {
+    setErrorMessage('');
   };
 
   return (
@@ -25,22 +37,22 @@ export const Signup = () => {
       <div className="row">
         <div className="col-4">
           <h1 className="titleSignup">Create an account</h1>
-          <Link to="/login" className="linkSignup">
-          <p>
-            <Link to="/login">← Back</Link>
-          </p>
-        </Link>
         </div>
         <div className="col-8">
+          {errorMessage && (
+            <div className="alert alert-danger" role="alert">
+              {errorMessage}
+            </div>
+          )}
           <form onSubmit={handleSignup}> 
             <div className="form-group">
               <label>Email address</label>
               <input
                 type="email"
                 className="form-control"
-                placeholder="Enter email"
+                placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => { setEmail(e.target.value); handleInputChange(); }}
                 required
               />
             </div>
@@ -49,9 +61,9 @@ export const Signup = () => {
               <input
                 type="password"
                 className="form-control"
-                placeholder="Password"
+                placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => { setPassword(e.target.value); handleInputChange(); }}
                 required
               />
             </div>
@@ -59,9 +71,20 @@ export const Signup = () => {
               Create account
             </button>
           </form>
-          <hr className="my-4" />
         </div>
       </div>
+      <div className="row align-items-center">
+        <div className="col-4">
+          <Link to="/login" className="linkSignup my-4">
+            <p>← Back</p>
+          </Link>
+        </div>
+        <div className="col-8">
+          <hr className="my-4" />
+      </div>
+</div>
+
     </div>
   );
 };
+
