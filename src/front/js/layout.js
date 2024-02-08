@@ -5,8 +5,9 @@ import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
-import { Singup } from "./pages/singup";
+import { Signup } from "./pages/signup";
 import injectContext from "./store/appContext";
+import Private from "./pages/private";
 
 
 //create your first component
@@ -24,7 +25,8 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Login />} path="/login" />
-                        <Route element={<Singup />} path="/singup" />
+                        <Route element={<Signup />} path="/signup" />
+                        <Route element={<Private />} path="/private" />
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>

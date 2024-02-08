@@ -1,6 +1,7 @@
 import React, { useState, useContext} from "react";
 import { Link, useNavigate }from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/login.css";
 
 export const Login = () => {
     const { actions } = useContext(Context);
@@ -13,17 +14,18 @@ export const Login = () => {
       try {
           const result = await actions.login(email, password);
           if (result) {
-            navigate("/"); 
+            navigate("/private"); 
+            setEmail('');
+            setPassword('');
           }
-
       } catch (error) {
           console.error("Error en el inicio de sesión:", error);
       }
     };
   
   return (
-    <div className="container">
-      <form className="mt-5" onSubmit={handleLogin}>
+    <div className="container login">
+      <form onSubmit={handleLogin}>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
@@ -50,13 +52,13 @@ export const Login = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btnLogin">
           Iniciar sesión
         </button>
       </form>
       <div className="mt-3">
         <p>
-          ¿No tienes una cuenta? <Link to="/singup">Crear cuenta</Link>
+          ¿No tienes una cuenta? <Link to="/signup">Crear cuenta</Link>
         </p>
       </div>
       <div className="mt-3">

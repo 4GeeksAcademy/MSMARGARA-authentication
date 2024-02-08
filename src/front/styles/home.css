@@ -1,7 +1,46 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.home{
+    background-color: #E7DFD8;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 10vh); 
+    overflow: hidden; 
+}   
+.imgHome{
+    background-image: url('https://github.com/4GeeksAcademy/MSMARGARA-authentication-python-flask-react.js/blob/main/src/front/img/imgHome.jpg?raw=true');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center top -50px;
+}
+.home .homeContainer {
+    flex: 1; 
+}
+.homeContainer {
+    padding: 8vh; 
+    border: 0.1vh solid black;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    margin-top: 2.7vh;
+    margin-bottom: 9vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title{
+    font-size:10vh;
+    font-weight: 540;
+    line-height: 1.2;
+}
+.subheading{
+    font-size: 3.4vh;
+    width: 80vh;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.project{
+    font-size: 3vh;
+    margin-top: 24vh;
+    line-height: 1.2;
+    font-style: oblique;
+}
+.academy{
+    line-height: 0.5;
+    font-weight: bold;
+}

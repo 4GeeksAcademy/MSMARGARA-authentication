@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../styles/component.css";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
+		<nav className="navbar">
+			<div className="container-fluid navebar">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">Home</span>
+					<span className="linkHome">HOME</span>
 				</Link>
-				<div className="ml-auto">
+				<Link to="/private">
+					<span className="linkHome">Private</span>
+				</Link>
+				<div>
 					<Link to="/login">
-						<button className="btn btn-primary">Iniciar sesion</button>
+						<button className="btn">Login</button>
 					</Link>
 				</div>
 			</div>
