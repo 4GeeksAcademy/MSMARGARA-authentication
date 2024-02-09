@@ -2,7 +2,6 @@ body{
     background-color: #E7DFD8;
 }
 .login {
-    /*background-color: #f5f2ef;*/
     width: 100vh;
     position: absolute;
     top: 50%;
@@ -27,13 +26,17 @@ input {
     padding: 1vh;
     font-size: 2.2vh;
     background-color: #E7DFD8;
+    width: 20vh;
+    margin-top: 1.5vh;
+    margin-bottom: 2.5vh;
 }
 .btnLogin:hover{
     background-color: #f5f2ef
 }
-input {
-    background-color: white;
+.link{
+    line-height: 0.8;
 }
-.input:not(:placeholder-shown):valid {
-    background-color: rgb(230, 173, 208);
+a {
+    color: #8c8c8c;
+    text-decoration: none;
 }

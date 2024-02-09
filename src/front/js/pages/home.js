@@ -6,17 +6,19 @@ import { Navbar } from "../component/navbar";
 export const Home = () => {
     return (
         <div>
-            <Navbar isLoggedIn={false}/>
-            <div className="home">
+            <div className="home container-fluid">
+                <Navbar isLoggedIn={false}/>
                 <div className="row homeContainer">
-                    <div className="col-7 text">
-                        <div className="row title"><p>Marina Margara</p></div>
-                        <div className="row subheading"><p>Authentication system with Python Flask and React.js</p></div>
-                        <div className="row project"><p>Educational Practice Projec</p></div>
-                        <div className="row academy"><p>4Geeks Academy</p></div>
+                    <div className="col-md-7 text">
+                        <div className="row">
+                            <div className="col-12 title"><p>Marina Margara</p></div>
+                            <div className="col-12 subheading"><p>Authentication system with Python Flask and React.js</p></div>
+                            <div className="col-12 project"><p>Educational Practice Projec</p></div>
+                            <div className="col-12 academy"><p>4Geeks Academy</p></div>
+                        </div>
                     </div>
-                    <div className="col-5 imgHome"></div>
-                </div>
+                <div className="col-md-5 imgHome"></div>
+            </div>
             </div>
         </div>
     );

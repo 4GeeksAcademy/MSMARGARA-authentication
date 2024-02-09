@@ -17,28 +17,24 @@ export const Signup = () => {
       console.log('Usuario creado con éxito:', data);
       navigate("/login"); 
     } catch (error) {
-      console.error('Error al crear usuario:', error);
-      if (error.message === "El correo electrónico ya está registrado.") {
-          setErrorMessage("La cuenta ya existe. Por favor, intenta con otro correo electrónico.");
-      } else {
-          setErrorMessage("Error al crear la cuenta. Por favor, inténtalo de nuevo más tarde.");
-      }
+      console.error('Error creating user:', error.message);
+      setErrorMessage(error.message); 
       setEmail('');
       setPassword('');
-  }
+    }
   };
-
+  
   const handleInputChange = () => {
     setErrorMessage('');
   };
 
-  return (
-    <div className="jumbotron">
+  return(
+    <div className="container signup">
       <div className="row">
-        <div className="col-4">
+        <div className="col-md-5">
           <h1 className="titleSignup">Create an account</h1>
         </div>
-        <div className="col-8">
+        <div className="col-md-7">
           {errorMessage && (
             <div className="alert alert-danger" role="alert">
               {errorMessage}
@@ -67,24 +63,22 @@ export const Signup = () => {
                 required
               />
             </div>
-            <button type="submit" className="btnSignup">
+            <button type="submit" className="btn btnSignup">
               Create account
             </button>
           </form>
         </div>
       </div>
-      <div className="row align-items-center">
-        <div className="col-4">
-          <Link to="/login" className="linkSignup my-4">
-            <p>← Back</p>
-          </Link>
-        </div>
-        <div className="col-8">
-          <hr className="my-4" />
+      <div className="row aling-items-center">
+            <div className="col-md-5">
+              <Link to="/login" className="linkSignup">
+              ← Go Back
+              </Link>
+            </div>
+            <div className="col-md-7">
+              <hr className="mt-4" />
+            </div>
       </div>
-</div>
-
     </div>
   );
 };
-

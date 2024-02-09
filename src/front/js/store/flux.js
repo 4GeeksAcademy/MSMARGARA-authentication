@@ -18,16 +18,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},	
 			login: async (email, password) => {
-                try {
-                    const resp = await fetch("https://friendly-halibut-wr75gwjvq4p7f9grw-3001.app.github.dev/api/login", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-							'Access-Control-Allow-Origin':'*'
-                        },
-                        body: JSON.stringify({ email, password }),
-                    });
-                    if (resp.ok) {
+				try {
+					const resp = await fetch("https://friendly-halibut-wr75gwjvq4p7f9grw-3001.app.github.dev/api/login", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Access-Control-Allow-Origin': '*'
+						},
+						body: JSON.stringify({ email, password }),
+					});
+					if (resp.ok) {
 						const data = await resp.json();
 						localStorage.setItem("token", data.token);
 						const updatedUserList = getStore().user.map(u => {
@@ -39,14 +39,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ user: updatedUserList });
 						setStore({ isAuthenticated: true });
 						return data;
-					}else {
-                        const errorData = await resp.json();
-                        console.error('Error en la autenticación:', errorData);
-                    }
-                } catch (error) {
-                    console.log("Error en la autenticación:", error);
-                }
-            },
+					} else {
+						throw new Error("Invalid credentials"); 
+					}
+				} catch (error) {
+					console.error("Error en la autenticación:", error.message);
+					throw new Error(error.message); 
+				}
+			},
+			
 			createUser : async (email, password) => {
 				try {
 					const resp = await fetch("https://friendly-halibut-wr75gwjvq4p7f9grw-3001.app.github.dev/api/signup", {
@@ -62,17 +63,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const data = await resp.json();
 						return data;
 					} else {
-						const errorData = await resp.json();
-						console.error('Error al crear usuario:', errorData);
-
-						if (errorData.msg === "El usuario ya existe") {
-							throw new Error('El correo electrónico ya está registrado.');
-						} else {
-							throw new Error('Error al crear usuario.');
-						}
+						throw new Error("That email is already associated with an account."); 
 					}
 				} catch (error) {
-					console.log("Error al crear usuario:", error);
+					console.log("Error creating user:", error);
 					throw error;
 				}
 			}

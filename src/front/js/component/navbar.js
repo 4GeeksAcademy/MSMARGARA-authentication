@@ -11,14 +11,13 @@ export const Navbar = ({ isLoggedIn, handleLogout }) => {
     };
 
     return (
-        <nav className="navbar">
-            <div className="container-fluid navebar">
-                <Link to={isLoggedIn ? "/" : "/login"}>
-                    <button className="btn" onClick={handleClick}>
-                        {isLoggedIn ? "Log Out" : "Login"}
-                    </button>
-                </Link>
-            </div>
+        <nav className="navbar d-flex justify-content-end"> 
+            <Link to={isLoggedIn ? "/" : "/login"}>
+                <button className="btn" onClick={handleClick}>
+                    {isLoggedIn ? "Log Out" : "Login"}
+                </button>
+            </Link>
         </nav>
     );
+    
 };

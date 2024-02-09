@@ -1,18 +1,4 @@
-.jumbotron{
-    width: 170vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: flex; 
-    flex-direction: column; 
-    align-items: left;
-    justify-content: center; 
-    border: black solid 0.1vh;
-    padding: 7vh 10vh;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); 
-}
+
 .btnSignup{
     border: solid 0.2vh black;
     border-radius: 0.5vh;
@@ -26,7 +12,25 @@
     background-color: #f5f2ef
 }
 .titleSignup{
-    font-size: 9vh;
+    font-size: 8.5vh;
     margin-right: 5vh;
 }
+.signup{
+    border: solid 1px black;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); 
+    padding: 7vh 10vh;
+    width: 120vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+a{
+    color: #8c8c8c;
+    text-decoration: none;
+}
+
+
+
 

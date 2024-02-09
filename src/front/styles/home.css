@@ -1,9 +1,7 @@
 .home{
     background-color: #E7DFD8;
-    display: flex;
     flex-direction: column;
     height: calc(100vh - 10vh); 
-    overflow: hidden; 
 }   
 .imgHome{
     background-image: url('https://github.com/4GeeksAcademy/MSMARGARA-authentication-python-flask-react.js/blob/main/src/front/img/imgHome.jpg?raw=true');
@@ -19,8 +17,7 @@
     border: 0.1vh solid black;
     margin-left: 10vh;
     margin-right: 10vh;
-    margin-top: 2.4vh;
-    margin-bottom: 9vh;
+    margin-top: 4vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .title{

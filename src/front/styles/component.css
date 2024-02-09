@@ -1,14 +1,14 @@
 .navbar {
-    margin: 0; 
-    padding: 0; 
-    height: 10vh;
+    padding: 0;
+    height: 12.5vh;
     background-color: #E7DFD8;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.container-fluid.navebar {
-    padding: 0 !important;
+    display: flex;
+    align-items: center; 
+    justify-content: flex-end;
+    margin-left: 10vh;
+    margin-right: 10vh;
 }
 .btn {
     border: solid black 1px;
-    margin-left: 195vh;
 }
